@@ -3,110 +3,41 @@
 Five criteria that say what "working" means for this classifier, written in
 unit 5 **before** anything was trained.
 
-**All five are yours this time.** None are given. You've had two projects of
-practice.
-
-An acceptance criterion names a number. *"The model is accurate"* is an
-opinion. *"Every label has an F1 of at least 0.60 on the held-out set"* is a
-criterion.
-
-Under each, write a sentence or two on **why that number**. A reason that says
-something about your data or your taxonomy earns credit — *"I picked 0.60 F1
-for `reaction` because it's my smallest label and I only have about 50
-examples of it"*. A reason that could be attached to any project does not.
-
-> Missing your own targets next unit costs you nothing. Setting a target so
-> easy you can't miss it does.
 
 ---
 
-## Pick numbers you can defend
-
-Not numbers that sound impressive. Three labels means a coin-flip guesser gets
-about 33%, so a target of 0.40 is barely a target. Your number should sit
-somewhere you'd honestly call useful.
-
-**Cover at least three of these five areas.** They're here as prompts, not as a
-form to fill in — a criterion that fits none of them is fine if it names a
-number.
-
-| Area | A question it could answer |
-|---|---|
-| Overall accuracy | How often does it need to be right to be worth using? |
-| Per-label performance | Is one label allowed to be much worse than the others? |
-| Balance | How lopsided can your label counts get before it's a problem? |
-| Consistency | If someone else labelled the same posts, how often should you agree? |
-| Confidence | Should a confident prediction be right more often than an unsure one? |
-
-Two things worth knowing before you pick numbers, because both will affect
-whether you hit them:
-
-- **Your smallest label will have the jumpiest score.** If a label has 50
-  examples, about 8 land in the test split. An F1 computed on 8 examples moves
-  a lot between seeds. A target for that label should be looser than one for
-  your biggest label, and saying so is a good reason.
-- **Unit 6 tests across three seeds, and the target has to hold across all
-  three.** A target of 0.65 against results of 0.71, 0.62, 0.68 is a **miss**.
-  Pick with that in mind — it is stricter than it first sounds.
-
----
-
-## 1.
-
-<!-- Your criterion. It must name a number. -->
-
-
+## 1. Every label must have an F1 score of at least 0.50 on the held-out test set for all three seeds.
 
 **Why this target:**
-
-
-
----
-
-## 2.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
+I want the model to recognize all five categories instead of doing well only on the most common ones. An F1 score of 0.50 seems like a reasonable minimum because it shows the model is doing better than simply guessing, while still allowing for the fact that some labels have fewer examples.
 
 ---
 
-## 3.
-
-<!-- Your criterion. -->
-
-
+## 2.The hot_take label can perform worse than the other labels, but it should still have an F1 score of at least 0.40 on the held-out test set across all three seeds.
 
 **Why this target:**
-
-
+My dataset has fewer hot_take examples, so the model has less information to learn from and its score may vary more between seeds. I am allowing it to have a lower score, but I still want the model to recognize hot_take posts often enough for the category to be useful.
 
 ---
 
-## 4.
-
-<!-- Your criterion. -->
-
-
+## 3. The model must correctly identify at least one true hot_take post in the held-out test set for each of the three seeds.
 
 **Why this target:**
-
-
+Since hot_take is the minority class, I do not want the model to ignore it and classify those posts as one of the other labels. This target makes sure the model is recognizing at least some hot_take posts instead of avoiding the category completely.
 
 ---
 
-## 5.
-
-<!-- Your criterion. -->
-
-
+## 4.When two people label the same 30 posts using the same definitions, they should agree on at least 80% of the time.
 
 **Why this target:**
+Some posts may be difficult to place because they fall between two categories, so I do not expect perfect agreement. However, an 80% agreement rate would show that the labeling rules are clear enough for two people to use them consistently.
 
+---
+
+## 5.For each seed, the model should be more accurate on its most-confident third of predictions than on its least-confident third of predictions.
+
+**Why this target:**
+Clearer posts should result in more confident predictions, while posts that are harder to classify should produce less confident predictions. This criterion checks whether the model’s confidence scores actually give a useful indication of how likely its predictions are to be correct.
 
 
 ---
