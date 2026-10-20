@@ -39,49 +39,64 @@
 
 ## What This Does
 
-<!-- Your community, and what your classifier sorts posts into. Three or four
-     sentences. -->
-
-
-
+I chose r/investing for my dataset and created five categories: analysis, hot take, reaction, personal experience, and question. While reviewing the posts, I noticed a few patterns in the titles. Some include specific numbers or financial figures, while others make general statements. Some express strong opinions, while others ask questions or share personal experiences. I also found that certain posts focus on individual financial decisions, whereas others discuss broader market trends and company performance. So, I added a separate question and personal_experience categories instead of forcing those posts into another label.
 ---
 
 ## Label Taxonomy
 
-<!-- Each label: a one-sentence definition and two real examples from your
-     reading. Then your decision rule for the hardest boundary.
+### `Analysis`
 
-     The decision rule is worth a point on its own and it's the thing most
-     people leave out. Every taxonomy has a hardest boundary. Name yours. -->
+**Definition:** A post that examines, explains, compares, or interprets information using reasoning or evidence.
 
-### `label_one`
-
-**Definition:**
-
-**Example 1:**
+**Example 1:** CoreWeave buys 8% of NVIDIA chips, NVIDIA backs CoreWeave; what about NVIDIA's revenue?
 >
 
-**Example 2:**
+**Example 2:** Why is the stock market climbing ever since Walsh increased rates?
 >
 
-### `label_two`
+### `Hot Take`
 
-**Definition:**
+**Definition:** A post that expresses a strong, debatable, or provocative opinion that challenges conventional views.
 
-**Example 1:**
+**Example 1:** How are cryptocurrencies not the dumbest thing ever?
 >
 
-**Example 2:**
+**Example 2:** The AI selloff isn’t about demand, it’s about the cost of money and if the biggest spenders can afford to build.
 >
+
+### `Reaction`
+
+**Definition:** A post that expresses an immediate emotional response, such as surprise, excitement, frustration, or disappointment
+
+**Example 1:** I know I'm behind for my age.
+
+**Example 2:** The "sell employee stock purchase plan" immediately strategy. This doesn't seem logical to me based on percentages
+
+### `Question` 
+
+**Definition:** A post that asks for information, clarification, or an explanation without primarily expressing a strong opinion.
+
+**Example 1:** How close to your planned retirement do you make your target date funds
+>
+
+**Example 2:** Since Coreweave has a majoy deal with Anthropic which secured the best junk rating, will this help Coreweave recover?
+>
+### `Personal Experience`
+
+**Definition:** A post that shares an individual's own experiences, decisions, observations, or lessons learned.
+
+**Example 1:** Limiting my 401k contribution to employer matched level only
+>
+
+**Example 2:** I've been a homeowner for 5 years. These are the biggest things I wish somebody told me on day one
+>
+
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** Analysis and Hot take.
 
-**The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
-
+**The decision rule I used every time:** If the title mainly explains, compares, or interprets something, it's Analysis, even if the tone is strong or controversial. If it mainly expresses a strong, debatable opinion, it's a Hot Take, even when it includes facts or evidence.
 
 
 ---
