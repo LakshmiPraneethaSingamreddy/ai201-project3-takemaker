@@ -46,49 +46,45 @@ I chose r/investing for my dataset and created five categories: analysis, hot ta
 
 ### `analysis`
 
-**Definition:** A post that examines, explains, compares, or interprets information using reasoning or evidence.
-
-**Example 1:** CoreWeave buys 8% of NVIDIA chips, NVIDIA backs CoreWeave; what about NVIDIA's revenue?
+>**Definition:** A post that examines, explains, compares, or interprets information using reasoning or evidence.
 >
-
-**Example 2:** Why is the stock market climbing ever since Walsh increased rates?
+>**Example 1:** CoreWeave buys 8% of NVIDIA chips, NVIDIA backs CoreWeave; what about NVIDIA's revenue?
+>
+>**Example 2:** Why is the stock market climbing ever since Walsh increased rates?
 >
 
 ### `hot_take`
 
-**Definition:** A post that expresses a strong, debatable, or provocative opinion that challenges conventional views.
-
-**Example 1:** How are cryptocurrencies not the dumbest thing ever?
+>**Definition:** A post that expresses a strong, debatable, or provocative opinion that challenges conventional views.
 >
-
-**Example 2:** The AI selloff isn’t about demand, it’s about the cost of money and if the biggest spenders can afford to build.
+>**Example 1:** How are cryptocurrencies not the dumbest thing ever?
+>
+>**Example 2:** The AI selloff isn’t about demand, it’s about the cost of money and if the biggest spenders can afford to build.
 >
 
 ### `reaction`
 
-**Definition:** A post that expresses an immediate emotional response, such as surprise, excitement, frustration, or disappointment
-
-**Example 1:** I know I'm behind for my age.
-
-**Example 2:** The "sell employee stock purchase plan" immediately strategy. This doesn't seem logical to me based on percentages
+>**Definition:** A post that expresses an immediate emotional response, such as surprise, excitement, frustration, or disappointment
+>
+>**Example 1:** I know I'm behind for my age.
+>
+>**Example 2:** The "sell employee stock purchase plan" immediately strategy. This doesn't seem logical to me based on percentages
 
 ### `question` 
 
-**Definition:** A post that asks for information, clarification, or an explanation without primarily expressing a strong opinion.
-
-**Example 1:** How close to your planned retirement do you make your target date funds
+>**Definition:** A post that asks for information, clarification, or an explanation without primarily expressing a strong opinion.
 >
-
-**Example 2:** Since Coreweave has a majoy deal with Anthropic which secured the best junk rating, will this help Coreweave recover?
+>**Example 1:** How close to your planned retirement do you make your target date funds
+>
+>**Example 2:** Since Coreweave has a majoy deal with Anthropic which secured the best junk rating, will this help Coreweave recover?
 >
 ### `personal_experience`
 
-**Definition:** A post that shares an individual's own experiences, decisions, observations, or lessons learned.
-
-**Example 1:** Limiting my 401k contribution to employer matched level only
+>**Definition:** A post that shares an individual's own experiences, decisions, observations, or lessons learned.
 >
-
-**Example 2:** I've been a homeowner for 5 years. These are the biggest things I wish somebody told me on day one
+>**Example 1:** Limiting my 401k contribution to employer matched level only
+>
+>**Example 2:** I've been a homeowner for 5 years. These are the biggest things I wish somebody told me on day one
 >
 
 
@@ -103,65 +99,73 @@ I chose r/investing for my dataset and created five categories: analysis, hot ta
 
 ## The Dataset
 
-<!-- Where you collected from, how you labelled, your counts, and three hard
-     cases. -->
+**Where the posts came from:** I collected the posts from `r/investing` subreddit
 
-**Where the posts came from:**
+**How I labelled them:** I have labeled the first 20 posts all by myself(cold) and for the rest I have used GitHub copilot to label them and gone through each one to make sure they are correct.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+|analysis| 59 | 29.3% |
+|hot_take| 41 | 20.3% |
+|question| 40 | 20% |
+|reaction| 37 | 18.4%|
+|personal_experience| 22 | 12% |
+| **Total** | 201  | 100% |
+
 
 **Three hard cases**
-
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
-
 **1.**
-> *The post:*
+> *The post:* Why is the stock market climbing ever since Walsh increased rates?
 >
-> *Could have been:*
+> *Could have been:* Question or Analysis
 >
-> *I chose, because:*
+> *I chose, because:* I chose Analysis because the post is asking about a relationship between two market events: the stock market going up and interest rates increasing. Even though it is written as a question, it is mainly trying to understand and interpret what caused the market to climb.
+
 
 **2.**
-> *The post:*
+> *The post:*  France is starting to look like a peripheral and that should concern everyone holding euro assets.
 >
-> *Could have been:*
+> *Could have been:* Hot Take or Analysis
 >
-> *I chose, because:*
+> *I chose, because:* I chose Hot Take because the post makes a strong and debatable opinion about France and warns people holding euro assets. It does not give enough evidence or explanation to be Analysis, so the main thing it is doing is expressing a strong viewpoint.
 
 **3.**
-> *The post:*
+> *The post:* The "sell employee stock purchase plan" immediately strategy. This doesn't seem logical to me based on percentages
 >
-> *Could have been:*
+> *Could have been:* Reaction or Personal Experience
 >
-> *I chose, because:*
+> *I chose, because:* I chose Reaction because the post mainly expresses confusion and disagreement with the strategy. The person does not really explain their own experience with an employee stock purchase plan, so I did not use Personal Experience.
 
 ---
 
 ## The Training Run
 
-<!-- Your starting model, your settings, and anything you changed and why. -->
+**Base model:** distilbert-base-uncased
 
-**Base model:**
+**Settings:**
+EPOCHS = 3, LEARNING_RATE = 2e-5, BATCH_SIZE = 16, SEED = 42
+**Anything I changed from the defaults, and why:** I did not change any default values
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Split sizes:** 
+train 139  ·  val 31  ·  test 31
+| label | train |  val | test|
+|---|---|---|---|                                
+|analysis  |            40 |   8 |   11 |
+|hot_take  |             28 |   6 |    7 |
+|reaction  |              26  | 7 |    4|
+|personal_experience |     16 |   2 |     4 |
+|question |               27   | 8 |    5|
 
-**Anything I changed from the defaults, and why:**
+ `hot_take` has only 7 examples in the test split.
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+ `reaction` has only 4 examples in the test split.
 
+ `personal_experience` has only 4 examples in the test split.
+
+ `question` has only 5 examples in the test split.
 
 
 ---
@@ -175,17 +179,17 @@ of next unit's variance. -->
      workflow and disclosing it costs you nothing. Not disclosing it is the
      problem. -->
 
-**Moment 1**
+**Moment 1** 
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I have asked the copilot to label the posts  based on my taxonomy rules that I have gathered from r/investing subreddit
+- *What came back:* It labeled the data, but many of them are incorrectly labeled
+- *What I changed:* I went through each one one by one and chnaged the incorrectly labeled labels.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* In the beginning of the project I asked chatgpt to find me some subreddits with wide variety of posts that can classify as analysis, hot_take and reactions
+- *What came back:* It gave so many subreddits, but almost 95% of them are just having questions in them not useful for the classification
+- *What I changed:* I have manually checked multiple popular subreddits and checked each of them and finally found r/investing subreddit.
 
 **Pre-labelling disclosure:**
 
