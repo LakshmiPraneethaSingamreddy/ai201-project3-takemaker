@@ -37,7 +37,7 @@ Some posts may be difficult to place because they fall between two categories, s
 ## 5.For each seed, the model should be more accurate on its most-confident third of predictions than on its least-confident third of predictions.
 
 **Why this target:**
-Clearer posts should result in more confident predictions, while posts that are harder to classify should produce less confident predictions. This criterion checks whether the model’s confidence scores actually give a useful indication of how likely its predictions are to be correct.
+Clearer posts should result in more confident predictions, while posts that are harder to classify should produce less confident predictions which helps in identifying how likely its predictions are correct.
 
 
 ---

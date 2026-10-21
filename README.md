@@ -44,7 +44,7 @@ I chose r/investing for my dataset and created five categories: analysis, hot ta
 
 ## Label Taxonomy
 
-### `Analysis`
+### `analysis`
 
 **Definition:** A post that examines, explains, compares, or interprets information using reasoning or evidence.
 
@@ -54,7 +54,7 @@ I chose r/investing for my dataset and created five categories: analysis, hot ta
 **Example 2:** Why is the stock market climbing ever since Walsh increased rates?
 >
 
-### `Hot Take`
+### `hot_take`
 
 **Definition:** A post that expresses a strong, debatable, or provocative opinion that challenges conventional views.
 
@@ -64,7 +64,7 @@ I chose r/investing for my dataset and created five categories: analysis, hot ta
 **Example 2:** The AI selloff isn’t about demand, it’s about the cost of money and if the biggest spenders can afford to build.
 >
 
-### `Reaction`
+### `reaction`
 
 **Definition:** A post that expresses an immediate emotional response, such as surprise, excitement, frustration, or disappointment
 
@@ -72,7 +72,7 @@ I chose r/investing for my dataset and created five categories: analysis, hot ta
 
 **Example 2:** The "sell employee stock purchase plan" immediately strategy. This doesn't seem logical to me based on percentages
 
-### `Question` 
+### `question` 
 
 **Definition:** A post that asks for information, clarification, or an explanation without primarily expressing a strong opinion.
 
@@ -81,7 +81,7 @@ I chose r/investing for my dataset and created five categories: analysis, hot ta
 
 **Example 2:** Since Coreweave has a majoy deal with Anthropic which secured the best junk rating, will this help Coreweave recover?
 >
-### `Personal Experience`
+### `personal_experience`
 
 **Definition:** A post that shares an individual's own experiences, decisions, observations, or lessons learned.
 
@@ -94,7 +94,7 @@ I chose r/investing for my dataset and created five categories: analysis, hot ta
 
 ### The hardest boundary
 
-**Which two labels:** Analysis and Hot take.
+**Which two labels:** analysis and hot_take.
 
 **The decision rule I used every time:** If the title mainly explains, compares, or interprets something, it's Analysis, even if the tone is strong or controversial. If it mainly expresses a strong, debatable opinion, it's a Hot Take, even when it includes facts or evidence.
 
