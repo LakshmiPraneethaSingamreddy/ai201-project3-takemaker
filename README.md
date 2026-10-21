@@ -143,6 +143,10 @@ I chose r/investing for my dataset and created five categories: analysis, hot ta
 
 ## The Training Run
 
+**Device:** device: cpu  (CPU)
+
+**Torch Version:** torch:  2.14.1+cpu
+
 **Base model:** distilbert-base-uncased
 
 **Settings:**
@@ -172,16 +176,9 @@ train 139  ·  val 31  ·  test 31
 
 ## How I Used AI
 
-<!-- Two specific moments — what you asked, what came back, what you changed.
-
-     ⚠️ Plus disclosure of any pre-labelling. If you had a model pre-label a
-     batch and then read and corrected every one, say that. It's an allowed
-     workflow and disclosing it costs you nothing. Not disclosing it is the
-     problem. -->
-
 **Moment 1** 
 
-- *What I asked for:* I have asked the copilot to label the posts  based on my taxonomy rules that I have gathered from r/investing subreddit
+- *What I asked for:* I have asked the copilot to label the posts based on my taxonomy rules that I have gathered from r/investing subreddit
 - *What came back:* It labeled the data, but many of them are incorrectly labeled
 - *What I changed:* I went through each one one by one and chnaged the incorrectly labeled labels.
 
