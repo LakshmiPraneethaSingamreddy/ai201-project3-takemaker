@@ -1,0 +1,201 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 31,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 31,
+    "accuracy": 0.22580645161290322,
+    "f1_macro": 0.25264069264069267,
+    "per_label": {
+      "analysis": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 11
+      },
+      "hot_take": {
+        "precision": 0.125,
+        "recall": 0.14285714285714285,
+        "f1": 0.13333333333333333,
+        "support": 7
+      },
+      "personal_experience": {
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571,
+        "support": 4
+      },
+      "question": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5
+      },
+      "reaction": {
+        "precision": 0.16666666666666666,
+        "recall": 0.75,
+        "f1": 0.27272727272727276,
+        "support": 4
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "3 Mega-IPOs Could Dump $3 Trillion in Overvalued Tech Onto Public Markets",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "UBS is bullish on commodities - why?",
+      "gold": "hot_take",
+      "predicted": "question"
+    },
+    {
+      "text": "Wholesale prices jump in a wild 6.3% rally, biggest gain since 2022 when inflation ran almost 10%",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Does anyone else feel that we\u2019re heading towards a financial crisis?",
+      "gold": "question",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Anyone else think Anthropic\u2019s valuation is going to plummet?",
+      "gold": "question",
+      "predicted": "reaction"
+    },
+    {
+      "text": "SpaceX said it's worth $1.75 trillion. Morningstar just said the real number is less than half of that.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Tesla's incredible run continues, up 28% in the last month and 15% in the last week. Now at $3850 pre split and $770 post split",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "My 401k hit $500k yesterday",
+      "gold": "personal_experience",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Can we please throw out the idea that Bitcoin is an asset that protects against inflation?",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "EA's FY2026 10-K says direct sales to Sony were about 39 percent of net revenue, Microsoft another 16 percent",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "It's a pump and dump (GPRO)!!!!!",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Inflation rose 8.6% in May, highest since 1981",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Am I the only one who respects Jerome Powell a lot?",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Friday before Christmas low effort post: Christmas trees rally 30% this year. - Bloomberg",
+      "gold": "analysis",
+      "predicted": "question"
+    },
+    {
+      "text": "We Just Witnessed the Largest U.S. Bank Failure since the Global Financial Crisis",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "I want to verbally vomit a few chunks about how vile this sub is.",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Market spent 2 years asking when does the Fed cut. Wednesday it's 85% to hike and I think everyone's watching the wrong thing.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "$3.8 trillion in 9 minutes, on a single caps lock post",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Tech equipment and software investment is 5.1% of GDP, above its 2000 level",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I analyzed all of Trump's Truth posts (over 23,000!) and how they affected the market.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Dollar dips, gold at record high as US prosecutors target Fed's Powell",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Just don\u2019t want to work til I\u2019m 100",
+      "gold": "personal_experience",
+      "predicted": "personal_experience"
+    },
+    {
+      "text": "Scared to get started investing",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Gold just experienced its biggest daily loss in history, cratering over 12.4%. About $6 trillion in market cap has been lost.",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "22, $120k in SF, maxing everything. How do I build wealth I can actually use in my 30s?",
+      "gold": "question",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Lost money trading before I realized that I'm actually an investor",
+      "gold": "personal_experience",
+      "predicted": "personal_experience"
+    },
+    {
+      "text": "Fractyl Health ($GUTS) had some good news today, but its shares still lost a lot of value. Is this because investors are scared of an impending dilution?",
+      "gold": "question",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Nvidia might be the easiest long on the market right now, and everyone's arguing about the wrong risk",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "My broker tried to get me into \u201calternative investments\", including private equity",
+      "gold": "personal_experience",
+      "predicted": "personal_experience"
+    },
+    {
+      "text": "What is going on today with the market crash?",
+      "gold": "question",
+      "predicted": "reaction"
+    },
+    {
+      "text": "China Q3 GDP hits 4.5% and retail sales came in double what forecasters expected",
+      "gold": "analysis",
+      "predicted": "reaction"
+    }
+  ]
+}

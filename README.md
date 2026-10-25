@@ -157,8 +157,8 @@ EPOCHS = 3, LEARNING_RATE = 2e-5, BATCH_SIZE = 16, SEED = 42
 train 139  ·  val 31  ·  test 31
 | label | train |  val | test|
 |---|---|---|---|                                
-|analysis  |            40 |   8 |   11 |
-|hot_take  |             28 |   6 |    7 |
+|analysis  |            41 |   8 |   11 |
+|hot_take  |             29 |   6 |    7 |
 |reaction  |              26  | 7 |    4|
 |personal_experience |     16 |   2 |     4 |
 |question |               27   | 8 |    5|
@@ -204,14 +204,17 @@ train 139  ·  val 31  ·  test 31
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.226 | 0.355 | +0.129 |
+| Macro F1 | 0.253 | 0.107 | -0.145 |
+| F1 — `analysis` | 0.000 | 0.537 | +0.537 |
+| F1 — `hot_take` | 0.133 | 0.000 | -0.133 |
+| F1 — `personal_experience` | 0.857 | 0.000 | -0.857 |
+| F1 — `question` | 0.000 | 0.000 | +0.000 |
+| F1 — `reaction` | 0.273 | 0.000 | -0.273 |
+
 
 **What I predicted before I looked:**
-<!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
-     prediction made afterwards isn't one. -->
+I think my trained model will predict the analysis posts well because it is the only label that my trained model learned because only it's accuracy is 0.36 while all others are 0 in my trained model.
 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
