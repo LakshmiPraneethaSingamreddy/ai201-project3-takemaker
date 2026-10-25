@@ -198,10 +198,6 @@ train 139  ·  val 31  ·  test 31
 ---
 
 ## Baseline vs. Trained
-
-<!-- Both models on the same posts. `python baseline.py --trained results.json`
-     prints this table for you. -->
-
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
 | Overall accuracy | 0.226 | 0.355 | +0.129 |
@@ -214,11 +210,10 @@ train 139  ·  val 31  ·  test 31
 
 
 **What I predicted before I looked:**
-I think my trained model will predict the analysis posts well because it is the only label that my trained model learned because only it's accuracy is 0.36 while all others are 0 in my trained model.
+I expected my trained model to perform best on `analysis` because it appears to have learned that label while failing to recognize the others.
 
 **What the gap actually means:**
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
+My trained model performed worse than the baseline because it became biased toward the `analysis` label and classified nearly every post as analysis. I need to retrain it with clearer, more balanced examples so it can better distinguish between all five categories.
 
 
 
@@ -226,49 +221,66 @@ I think my trained model will predict the analysis posts well because it is the 
 
 ## Run Log — Before
 
-<!-- Five criteria across three seeds. The notebook's section 6 prints the
-     spread table; the Target and Verdict columns are yours. -->
+**Spread Table:**
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.355 | 0.226 | 0.452 | 0.226 |
+| Macro F1 | 0.107 | 0.074 | 0.338 | 0.264 |
+| F1 — `analysis` | 0.537 | 0.368 | 0.519 | 0.168 |
+| F1 — `hot_take` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `reaction` | 0.000 | 0.000 | 0.600 | 0.600 |
+| F1 — `personal_experience` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `question` | 0.000 | 0.000 | 0.571 | 0.571 |
+
+**device: cpu  (CPU)**
+
+**torch:  2.14.1+cpu**
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Every label must have an F1 score of at least 0.50 on the held-out test set for all three seeds. | 5 of 5  | MISS | MISS | MISS | MISS |
+| 2. The hot_take label can perform worse than the other labels, but it should still have an F1 score of at least 0.40 on the held-out test set across all three seeds. |  3 of 3 | MISS | MISS | MISS  | MISS |
+| 3. The model must correctly identify at least one true hot_take post in the held-out test set for each of the three seeds.  | 3 of 3 | MISS | MISS | MISS | MISS |
+| 4. When two people label the same 30 posts using the same definitions, they should agree on at least 80% of the time.  | 24 of 30| MET | MET | MET | MET |
+| 5. For each seed, the model should be more accurate on its most-confident third of predictions than on its least-confident third of predictions.  | 3 of 3 | MET | MET | MET | MET |
+
+
 
 ### Confusion matrix
 
-<!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
-     An image of a matrix earns nothing. -->
+| true \ predicted | analysis | hot_take | reaction | personal_experience | question |
+|---|---|---|---|---|---|
+| **analysis** | 11 | 0 | 0 | 0 | 0 |
+| **hot_take** | 7 | 0 | 0 | 0 | 0 |
+| **reaction** | 4 | 0 | 0 | 0 | 0 |
+| **personal_experience** | 3 | 1 | 0 | 0 | 0 |
+| **question** | 5 | 0 | 0 | 0 | 0 |
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
 
 **My biggest off-diagonal number, and what it means:**
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
-
-
+Looking at the confusion matrix, I can see that the model predicted
+`analysis` for 30 of the 31 posts. It correctly identified all 11 actual
+`analysis` posts, but it also labeled 7 `hot_take`, 4 `reaction`, 3
+`personal_experience`, and 5 `question` posts as `analysis`. The only other
+prediction was a `personal_experience` post labeled as `hot_take`. The model
+did not predict any posts as `reaction`, `personal_experience`, or `question`.
+This shows that the model has become heavily biased toward `analysis` instead
+of learning the differences between the categories. I need to review and
+rebalance the training examples, especially the boundaries between `analysis`
+and the other labels, so each category has clearer and more consistent
+examples.
 
 ---
 
 ## Verdicts and Diagnoses
-
-<!-- MET or MISSED against LAST UNIT's target. The target has to hold across
-     all three seeds, not turn up sometimes. -->
-
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Every label must have an F1 score of at least 0.50 on the held-out test set for all three seeds. | 5 of 5 | MISS | Not even one label has F1 score of atleast 0.50 across all three seeds |
+| 2 | The hot_take label can perform worse than the other labels, but it should still have an F1 score of at least 0.40 on the held-out test set across all three seeds. | 3 of 3 | MISS | hot_take label has 0.0 recall across all three seeds  |
+| 3 | The model must correctly identify at least one true hot_take post in the held-out test set for each of the three seeds. | 3 of 3 | MISS | It didnot identify even one post as hot_take because in every seeds confusion matrix, it didn't even classify one hot_take post correctly as hot take |
+| 4 | When two people label the same 30 posts using the same definitions, they should agree on at least 80% of the time.   | 24 of 30  | MET | I asked 2 of my friends to label the same posts, and we agreed on 26 out of 30. That is above 80%, so it is met |
+| 5 | For each seed, the model should be more accurate on its most-confident third of predictions than on its least-confident third of predictions. | 3 of 3 | MET | For every seed, the model's most confident third of predictions have high score than the least confident theird of predictions. |
 
 **Diagnoses**
 
