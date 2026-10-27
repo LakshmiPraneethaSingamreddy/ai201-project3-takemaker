@@ -344,24 +344,25 @@ Patterns in my disagreements tells me that I sometimes focused too much on stron
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** I have changed the learning rate to 3e-5 from 2e-5  and also increased the no.of epochs from 3 to 6
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** At first, my model predicted almost every post in the test set as `analysis`, so I felt that it was becoming biased toward that category and was not learning how to tell the labels apart. To improve this, I experimented with the learning rate and increased the number of epochs to see if more consistent updates and extra training would help the model recognize the other categories.
 
 ### Run Log — After
 
+
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Every label must have an F1 score of at least 0.50 on the held-out test set for all three seeds. | 5 of 5  |0.81,0.28,0.0,0.0,0.67| 0.41,0.36,0.0,0.0,0.71 | 0.51,0.22,0.6,0.0,0.67 | MISS |
+| 2. The hot_take label can perform worse than the other labels, but it should still have an F1 score of at least 0.40 on the held-out test set across all three seeds. |  3 of 3 | 0.28 | 0.36 | 0.22  | MISS |
+| 3. The model must correctly identify at least one true hot_take post in the held-out test set for each of the three seeds.  | 3 of 3 | 2/5 | 2/5 | 1/5 | MET |
+| 4. When two people label the same 30 posts using the same definitions, they should agree on at least 80% of the time.  | 24 of 30| MET | MET | MET | MET |
+| 5. For each seed, the model should be more accurate on its most-confident third of predictions than on its least-confident third of predictions.  | 3 of 3 | 0.8>0.2 | 0.6>0.1 | 0.7>0.4 | MET |
+
 
 **Did it help, and how do I know:**
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+     Criterion 3 was met after improving the model so that it correctly identified at least one `hot_take` post in the test set. While this may seem like a small improvement, I consider it significant because the model started recognizing multiple labels instead of classifying every post as `analysis`. This progress can also be seen in the changes to the accuracy, F1 score, and per-label macro scores before and after the improvements.
 
 
 
@@ -369,13 +370,14 @@ Patterns in my disagreements tells me that I sometimes focused too much on stron
 
 ## What's Still Broken
 
-<!-- For each criterion still missed: what you'd do, and why you stopped. -->
+Criteria 1 and 2 are still not met. The model did not achieve an F1 score of at least 0.50 for every label, and the hot_take F1 score stayed below 0.40 for all three seeds. I would improve this by relabeling the data using the correct label boundaries and adding more examples to the weaker classes so that the classes are more balanced and the model can learn more effectively. I stopped here because I ran out of time, but I plan to continue training and improving my model in my free time so that it can classify multiple labels more accurately instead of relying mostly on the analysis label.
 
 
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
-<!-- Two sentences. Your confusion matrix is the evidence. -->
+
+     I intended `reaction` to describe an immediate response and `personal_experience` to describe someone sharing their own experience, but the model often confused both labels with `analysis` or `hot_take`. The confusion matrices show this clearly where `reaction` was frequently predicted as `analysis`, while `personal_experience` was never correctly identified for any of the three seeds, which suggests that the model has not learned reliable boundaries between these categories.
 
 
 
