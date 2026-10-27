@@ -239,11 +239,11 @@ My trained model performed worse than the baseline because it became biased towa
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1. Every label must have an F1 score of at least 0.50 on the held-out test set for all three seeds. | 5 of 5  | MISS | MISS | MISS | MISS |
-| 2. The hot_take label can perform worse than the other labels, but it should still have an F1 score of at least 0.40 on the held-out test set across all three seeds. |  3 of 3 | MISS | MISS | MISS  | MISS |
-| 3. The model must correctly identify at least one true hot_take post in the held-out test set for each of the three seeds.  | 3 of 3 | MISS | MISS | MISS | MISS |
+| 1. Every label must have an F1 score of at least 0.50 on the held-out test set for all three seeds. | 5 of 5  |0.5,0.0,0.0,0.0,0.0| 0.36,0.0,0.0,0.0,0.0 | 0.5,0.0,0.6,0.0,0.57 | MISS |
+| 2. The hot_take label can perform worse than the other labels, but it should still have an F1 score of at least 0.40 on the held-out test set across all three seeds. |  3 of 3 | 0.0 | 0.0 | 0.0  | MISS |
+| 3. The model must correctly identify at least one true hot_take post in the held-out test set for each of the three seeds.  | 3 of 3 | 0 | 0 | 0 | MISS |
 | 4. When two people label the same 30 posts using the same definitions, they should agree on at least 80% of the time.  | 24 of 30| MET | MET | MET | MET |
-| 5. For each seed, the model should be more accurate on its most-confident third of predictions than on its least-confident third of predictions.  | 3 of 3 | MET | MET | MET | MET |
+| 5. For each seed, the model should be more accurate on its most-confident third of predictions than on its least-confident third of predictions.  | 3 of 3 | 0.8>0.0 | 0.4>0.1 | 0.7>0.4 | MET |
 
 
 
@@ -278,21 +278,16 @@ examples.
 |---|---|---|---|---|
 | 1 | Every label must have an F1 score of at least 0.50 on the held-out test set for all three seeds. | 5 of 5 | MISS | Not even one label has F1 score of atleast 0.50 across all three seeds |
 | 2 | The hot_take label can perform worse than the other labels, but it should still have an F1 score of at least 0.40 on the held-out test set across all three seeds. | 3 of 3 | MISS | hot_take label has 0.0 recall across all three seeds  |
-| 3 | The model must correctly identify at least one true hot_take post in the held-out test set for each of the three seeds. | 3 of 3 | MISS | It didnot identify even one post as hot_take because in every seeds confusion matrix, it didn't even classify one hot_take post correctly as hot take |
+| 3 | The model must correctly identify at least one true hot_take post in the held-out test set for each of the three seeds. | 3 of 3 | MISS | It did not identify even one post as hot_take because in every seeds confusion matrix, it didn't even classify one hot_take post correctly as hot take |
 | 4 | When two people label the same 30 posts using the same definitions, they should agree on at least 80% of the time.   | 24 of 30  | MET | I asked 2 of my friends to label the same posts, and we agreed on 26 out of 30. That is above 80%, so it is met |
 | 5 | For each seed, the model should be more accurate on its most-confident third of predictions than on its least-confident third of predictions. | 3 of 3 | MET | For every seed, the model's most confident third of predictions have high score than the least confident theird of predictions. |
 
 **Diagnoses**
+**Criterion 1:** The model labeled almost every post as `analysis`, and it did not learn how to tell the five categories apart. The confusion matrix also shows that 30 out of 31 posts were classified as `analysis`, so I think I need to train the model more.
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
+**Criterion 2:** The model had an F1 score of 0 for `hot_take` in all three seeds. Based on my agreement report, I also sometimes confused `hot_take` with `analysis`, so I think I need to provide clearer examples showing the difference between these two labels.
 
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
-
+**Criterion 3:** The model did not correctly identify even one `hot_take` post in any of the three runs. I think this probably happened because there were not enough clear and balanced `hot_take` examples for the model to learn from.
 
 
 ---
