@@ -299,54 +299,50 @@ examples.
 
 ## Agreement Report
 
-<!-- Your rate against the staff set, and every disagreement adjudicated.
 
-     Remember you labelled these 30 under the STAFF taxonomy in
-     data/staff_taxonomy.md, not your own — so every argument below is made
-     from those definitions and those decision rules. -->
+**Agreement rate:** 24 / 30 = 86.7%
 
-**Agreement rate:** ___ / 30 = ___%
-
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
 
 **Disagreements**
 
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
-
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
-
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
-
 **1.**
-> *The post:*
+> *The post:* "The club championship scoring changed in 2019 from top-6 to top-10. Since then our B team has finished above the A team twice. That's not depth improving, it's the scoring rewarding turnout."
 >
-> *Staff said / I said:*
+> *Staff said / I said:* analysis
 >
-> *My call, and why:*
+> *My call, and why:* hot_take, because eventhough they showed why they have won, I felt that writer already reached a conclusion and the numbers are just for support,but when reading again I think analysis suits better because they are trying to state the fact why their team had improved
 >
-> *Which pile:*
+> *Which pile:* the rule covered it and I applied it loosely
+
 
 **2.**
-> *The post:*
+> *The post:* "Carbon plates aren't the whole story. My times dropped 2% in the shoes and another 2% the following year in the same pair, when the only thing that changed was going from 35 to 50 miles a week."
 >
-> *Staff said / I said:*
+> *Staff said / I said:* analysis
 >
-> *My call, and why:*
+> *My call, and why:* hot_take, I initially marked it as analysis, but when I read that again, I felt that author is claiming that she ran more miles eventhough her dropping of rate is same as last year but thisn't due to carbon plating. I didn't see analysis there
 >
-> *Which pile:*
+> *Which pile:*  the rule covered it and I applied it loosely
+
+**3.**
+> *The post:* Got up at 5, drove ninety minutes, and it's cancelled. Standing in the car park in the rain reading the email."
+>
+> *Staff said / I said:* reaction
+>
+> *My call, and why:* analysis, there is no reaction there, he's just standing in the parking lot reading he cancellation email and didn't express anything. There isn't any response from his side so I didn't know which to mark, and it isn't a hot_take so I marked it as analysis.
+> *Which pile:* the rule is ambiguous here and my reading is defensible
+
+**4.**
+> *The post:* "Wind was so bad on the out section I was leaning at about 20 degrees. Coming back felt like cheating.",
+>
+> *Staff said / I said:* reaction
+>
+> *My call, and why:* hot_take, I thought this was a hot_take because they are claiming that wind outside is very bad and used number just to support that, but reading it again I agree with that being a reaction
+>
+> *Which pile:*  the rule covered it and I applied it loosely
 
 **What the pattern in my disagreements tells me:**
-
+Patterns in my disagreements tells me that I sometimes focused too much on strong wording or specific details instead of identifying the main purpose of each post. I treated posts with numbers as analysis and posts with strong statements as hot takes, even when they were mainly expressing an immediate reaction or experience. This helped me realize that I need to ask whether the post is primarily explaining evidence, expressing a debatable opinion, or sharing an immediate response.
 
 
 ---
